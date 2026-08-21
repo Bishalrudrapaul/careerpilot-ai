@@ -1,15 +1,8 @@
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
-import type { LandingSection } from '../types'
 
-interface LandingNavbarProps {
-  onNavigate: (section: LandingSection) => void
-}
-
-export default function LandingNavbar({
-  onNavigate,
-}: LandingNavbarProps) {
+export default function LandingNavbar() {
   return (
     <motion.nav
       initial={{ opacity: 0, y: -12 }}
@@ -28,29 +21,26 @@ export default function LandingNavbar({
       </Link>
 
       <div className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
-        <button
-          type="button"
-          onClick={() => onNavigate('how-it-works')}
+        <Link
+          to="/how-it-works"
           className="transition hover:text-slate-950"
         >
           How it works
-        </button>
+        </Link>
 
-        <button
-          type="button"
-          onClick={() => onNavigate('capabilities')}
+        <Link
+          to="/capabilities"
           className="transition hover:text-slate-950"
         >
           Capabilities
-        </button>
+        </Link>
 
-        <button
-          type="button"
-          onClick={() => onNavigate('career-journey')}
+        <Link
+          to="/career-journey"
           className="transition hover:text-slate-950"
         >
           Career journey
-        </button>
+        </Link>
       </div>
 
       <div className="flex items-center gap-3">

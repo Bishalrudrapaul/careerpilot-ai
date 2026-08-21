@@ -7,41 +7,27 @@ const LandingPage = lazy(
   () => import('../features/marketing/landing/LandingPage'),
 )
 
-const DashboardPage = lazy(
-  () => import('../pages/DashboardPage'),
+const HowItWorksSection = lazy(
+  () => import('../features/marketing/landing/sections/HowItWorksSection'),
 )
 
-const ProfilePage = lazy(
-  () => import('../pages/ProfilePage'),
+const CapabilitiesSection = lazy(
+  () => import('../features/marketing/landing/sections/CapabilitiesSection'),
 )
 
-const JobsPage = lazy(
-  () => import('../pages/JobsPage'),
+const CareerJourneySection = lazy(
+  () => import('../features/marketing/landing/sections/CareerJourneySection'),
 )
 
-const ApplicationsPage = lazy(
-  () => import('../pages/ApplicationsPage'),
-)
-
-const CompaniesPage = lazy(
-  () => import('../pages/CompaniesPage'),
-)
-
-const CareerAIPage = lazy(
-  () => import('../pages/CareerAIPage'),
-)
-
-const LearningPage = lazy(
-  () => import('../pages/LearningPage'),
-)
-
-const NotificationsPage = lazy(
-  () => import('../pages/NotificationsPage'),
-)
-
-const SettingsPage = lazy(
-  () => import('../pages/SettingsPage'),
-)
+const DashboardPage = lazy(() => import('../pages/DashboardPage'))
+const ProfilePage = lazy(() => import('../pages/ProfilePage'))
+const JobsPage = lazy(() => import('../pages/JobsPage'))
+const ApplicationsPage = lazy(() => import('../pages/ApplicationsPage'))
+const CompaniesPage = lazy(() => import('../pages/CompaniesPage'))
+const CareerAIPage = lazy(() => import('../pages/CareerAIPage'))
+const LearningPage = lazy(() => import('../pages/LearningPage'))
+const NotificationsPage = lazy(() => import('../pages/NotificationsPage'))
+const SettingsPage = lazy(() => import('../pages/SettingsPage'))
 
 function LoadingScreen() {
   return (
@@ -57,6 +43,9 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<MarketingLayout />}>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/how-it-works" element={<HowItWorksSection />} />
+          <Route path="/capabilities" element={<CapabilitiesSection />} />
+          <Route path="/career-journey" element={<CareerJourneySection />} />
         </Route>
 
         <Route element={<AppLayout />}>

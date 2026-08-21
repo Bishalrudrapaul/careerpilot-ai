@@ -1,22 +1,15 @@
 import { motion } from 'motion/react'
 import { ArrowRight, CheckCircle2, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import type { LandingSection } from '../types'
 import CareerSystemVisual from './CareerSystemVisual'
 import HeroBackground from './HeroBackground'
 import LandingNavbar from './LandingNavbar'
 
-interface HeroSectionProps {
-  onNavigate: (section: LandingSection) => void
-}
-
-export default function HeroSection({
-  onNavigate,
-}: HeroSectionProps) {
+export default function HeroSection() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-[#f7f8fc]">
       <HeroBackground />
-      <LandingNavbar onNavigate={onNavigate} />
+      <LandingNavbar />
 
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-16 px-6 py-12 lg:grid-cols-[.92fr_1.08fr] lg:px-8">
         <motion.div
@@ -38,8 +31,8 @@ export default function HeroSection({
           </h1>
 
           <p className="mt-7 max-w-xl text-lg leading-8 text-slate-600">
-            CareerPilot AI connects your profile, skills, goals,
-            opportunities, and next steps into one intelligent career system.
+            CareerPilot AI connects your profile, skills, goals, opportunities,
+            and next steps into one intelligent career system.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -54,13 +47,12 @@ export default function HeroSection({
               />
             </Link>
 
-            <button
-              type="button"
-              onClick={() => onNavigate('how-it-works')}
+            <Link
+              to="/how-it-works"
               className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
             >
               Explore how it works
-            </button>
+            </Link>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-500">

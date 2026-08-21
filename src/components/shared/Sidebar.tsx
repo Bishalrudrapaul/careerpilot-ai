@@ -92,11 +92,11 @@ export default function Sidebar() {
 
         <div className="flex items-center gap-3 border-t border-white/10 px-2 pt-4">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-amber-300 to-orange-500 text-sm font-bold text-slate-900">
-            BP
-          </div>
+  ?
+</div>
 
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold">Bishal Pal</p>
+            <p className="truncate text-sm font-semibold">Your Profile</p>
             <p className="text-xs text-slate-400">View Profile</p>
           </div>
         </div>
