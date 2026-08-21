@@ -1,30 +1,78 @@
+import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import MarketingLayout from '../layouts/MarketingLayout'
 import AppLayout from '../layouts/AppLayout'
-import DashboardPage from '../pages/DashboardPage'
-import ProfilePage from '../pages/ProfilePage'
-import JobsPage from '../pages/JobsPage'
-import ApplicationsPage from '../pages/ApplicationsPage'
-import CompaniesPage from '../pages/CompaniesPage'
-import CareerAIPage from '../pages/CareerAIPage'
-import LearningPage from '../pages/LearningPage'
-import NotificationsPage from '../pages/NotificationsPage'
-import SettingsPage from '../pages/SettingsPage'
+
+const LandingPage = lazy(
+  () => import('../features/marketing/landing/LandingPage'),
+)
+
+const DashboardPage = lazy(
+  () => import('../pages/DashboardPage'),
+)
+
+const ProfilePage = lazy(
+  () => import('../pages/ProfilePage'),
+)
+
+const JobsPage = lazy(
+  () => import('../pages/JobsPage'),
+)
+
+const ApplicationsPage = lazy(
+  () => import('../pages/ApplicationsPage'),
+)
+
+const CompaniesPage = lazy(
+  () => import('../pages/CompaniesPage'),
+)
+
+const CareerAIPage = lazy(
+  () => import('../pages/CareerAIPage'),
+)
+
+const LearningPage = lazy(
+  () => import('../pages/LearningPage'),
+)
+
+const NotificationsPage = lazy(
+  () => import('../pages/NotificationsPage'),
+)
+
+const SettingsPage = lazy(
+  () => import('../pages/SettingsPage'),
+)
+
+function LoadingScreen() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-[#f7f8fc]">
+      <div className="h-9 w-9 animate-spin rounded-full border-2 border-slate-200 border-t-violet-600" />
+    </div>
+  )
+}
 
 export default function AppRoutes() {
   return (
-    <Routes>
-      <Route element={<AppLayout />}>
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/jobs" element={<JobsPage />} />
-        <Route path="/applications" element={<ApplicationsPage />} />
-        <Route path="/companies" element={<CompaniesPage />} />
-        <Route path="/career-ai" element={<CareerAIPage />} />
-        <Route path="/learning" element={<LearningPage />} />
-        <Route path="/notifications" element={<NotificationsPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-      </Route>
-    </Routes>
+    <Suspense fallback={<LoadingScreen />}>
+      <Routes>
+        <Route element={<MarketingLayout />}>
+          <Route path="/" element={<LandingPage />} />
+        </Route>
+
+        <Route element={<AppLayout />}>
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/jobs" element={<JobsPage />} />
+          <Route path="/applications" element={<ApplicationsPage />} />
+          <Route path="/companies" element={<CompaniesPage />} />
+          <Route path="/career-ai" element={<CareerAIPage />} />
+          <Route path="/learning" element={<LearningPage />} />
+          <Route path="/notifications" element={<NotificationsPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Suspense>
   )
 }
