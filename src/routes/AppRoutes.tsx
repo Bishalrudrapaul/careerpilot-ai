@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import AuthLayout from '../layouts/AuthLayout'
 import MarketingLayout from '../layouts/MarketingLayout'
 import AppLayout from '../layouts/AppLayout'
 
@@ -17,6 +18,14 @@ const CapabilitiesSection = lazy(
 
 const CareerJourneySection = lazy(
   () => import('../features/marketing/landing/sections/CareerJourneySection'),
+)
+
+const LoginPage = lazy(
+  () => import('../features/auth/login/LoginPage'),
+)
+
+const SignupPage = lazy(
+  () => import('../features/auth/signup/SignupPage'),
 )
 
 const DashboardPage = lazy(() => import('../pages/DashboardPage'))
@@ -46,6 +55,11 @@ export default function AppRoutes() {
           <Route path="/how-it-works" element={<HowItWorksSection />} />
           <Route path="/capabilities" element={<CapabilitiesSection />} />
           <Route path="/career-journey" element={<CareerJourneySection />} />
+        </Route>
+
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
         </Route>
 
         <Route element={<AppLayout />}>

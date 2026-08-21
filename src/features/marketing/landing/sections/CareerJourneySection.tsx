@@ -28,10 +28,13 @@ export default function CareerJourneySection() {
       <div className="relative mx-auto w-full max-w-7xl pt-16">
         <Link
           to="/"
-          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-slate-950"
+          className="group mb-8 inline-flex items-center gap-2 rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-slate-300/30 transition hover:-translate-y-0.5 hover:bg-slate-800"
         >
-          <ArrowLeft size={16} />
-          Back to home
+          <ArrowLeft
+            size={15}
+            className="transition-transform group-hover:-translate-x-0.5"
+          />
+          Back
         </Link>
 
         <div className="grid items-center gap-14 lg:grid-cols-[.8fr_1.2fr]">
