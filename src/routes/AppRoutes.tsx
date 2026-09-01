@@ -1,8 +1,10 @@
 import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import AuthLayout from '../layouts/AuthLayout'
-import MarketingLayout from '../layouts/MarketingLayout'
 import AppLayout from '../layouts/AppLayout'
+import MarketingLayout from '../layouts/MarketingLayout'
+import ProtectedRoute from '../components/shared/ProtectedRoute'
+
 
 const LandingPage = lazy(
   () => import('../features/marketing/landing/LandingPage'),
@@ -62,17 +64,19 @@ export default function AppRoutes() {
           <Route path="/signup" element={<SignupPage />} />
         </Route>
 
-        <Route element={<AppLayout />}>
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/jobs" element={<JobsPage />} />
-          <Route path="/applications" element={<ApplicationsPage />} />
-          <Route path="/companies" element={<CompaniesPage />} />
-          <Route path="/career-ai" element={<CareerAIPage />} />
-          <Route path="/learning" element={<LearningPage />} />
-          <Route path="/notifications" element={<NotificationsPage />} />
-          <Route path="/settings" element={<SettingsPage />} />
-        </Route>
+        <Route element={<ProtectedRoute />}>
+  <Route element={<AppLayout />}>
+    <Route path="/dashboard" element={<DashboardPage />} />
+    <Route path="/profile" element={<ProfilePage />} />
+    <Route path="/jobs" element={<JobsPage />} />
+    <Route path="/applications" element={<ApplicationsPage />} />
+    <Route path="/companies" element={<CompaniesPage />} />
+    <Route path="/career-ai" element={<CareerAIPage />} />
+    <Route path="/learning" element={<LearningPage />} />
+    <Route path="/notifications" element={<NotificationsPage />} />
+    <Route path="/settings" element={<SettingsPage />} />
+  </Route>
+</Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
